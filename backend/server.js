@@ -66,39 +66,26 @@ app.use('/api/message', messageRoute);
 //console.log(process.env.NODE_ENV);
 
 //for production  to vercel
-// const __dirname1 = path.resolve();
-// console.log(__dirname1)
-//  app.use(express.static(path.join(__dirname1, '/frontend/build')));
-//  app.get('*', (req, res) => {
-//    res.sendFile(path.resolve(__dirname1, '/frontend/build/index.html'));
-//  });
 
-// const __dirname1 = path.resolve();
-// console.log(__dirname1);
+ console.log(path.join(__dirname, '../frontend/build'));
+ app.use(express.static(path.join(__dirname, '../frontend/build')));
+ app.get('/*', (req, res) => {
+   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+ });
 
-if (process.env.NODE_ENV === 'PRODUCTION') {
-  //production build configuration
-  // console.log(path.resolve());
-  // console.log(path.resolve() + '/frontend/build');
-  // app.use(express.static(path.resolve() + '/frontend/build'));
-  // app.get('/*', (req, res) => {
-  //   res.sendFile(path.resolve() + '/frontend/build/index.html');
-  // });
-  console.log(path.join(__dirname, '../frontend/build'));
-  app.use(express.static(path.join(__dirname,"../frontend/build")));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
-  });
+// if (process.env.NODE_ENV === 'PRODUCTION') {
+  
+//   console.log(path.join(__dirname, '../frontend/build'));
+//   app.use(express.static(path.join(__dirname,"../frontend/build")));
+//   app.get('/*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+//   });
 
-  // app.use(express.static(path.join(__dirname, '/frontend/build')));
-  // app.get('/*', (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, '/frontend/build/index.html'));
-  // });
-} else {
-  app.get('/', (req, res) => {
-    res.send('Api is running');
-  });
-}
+// } else {
+//   app.get('/', (req, res) => {
+//     res.send('Api is running');
+//   });
+// }
 
 
 const server = app.listen(port, () => {
