@@ -12,7 +12,7 @@ import io from 'socket.io-client';
 import Lottie from 'lottie-react';
 import TypingAnimation from '../../animations/typing.json';
 
-const ENDPOINT = 'https://chatskoot-pl8l.vercel.app/'; //replace with vercel link
+const ENDPOINT = 'https://chatskoot-pl8l.vercel.app'; //replace with vercel link
 
 let socket, selectedChatCompare;
 
