@@ -95,7 +95,7 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server, {
   pingTimeout: 60000, //it is the time after which socket connection become inactive
   cors: {
-    origin: 'https://chatskoot-pl8l.vercel.app/'  //
+    origin: 'https://chatskoot-pl8l.vercel.app'  //
   }
 });
 
