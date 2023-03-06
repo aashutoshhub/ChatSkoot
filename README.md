@@ -19,3 +19,13 @@
 
 ![image](https://user-images.githubusercontent.com/83817233/223158776-affdeadd-19ff-4d02-ac90-df206c7be1ff.png)
 
+Install Dependencies
+For Backend - npm i
+
+For Frontend - cd frontend  npm i
+
+Env Variables <br/>
+Make Sure to Create a .env file in backend directory and add appropriate variables in order to use the app.
+
+Essential Variables <br/> PORT=.... <br/>DB_URI = .... <br/>STRIPE_API_KEY=.... <br/>STRIPE_SECRET_KEY=.... <br/>JWT_SECRET=.... <br/>JWT_EXPIRE=.... <br/>COOKIE_EXPIRE=.... <br/>CLOUDINARY_NAME=.... <br/>CLOUDINARY_API_KEY=.... <br/>CLOUDINARY_API_SECRET=.... <br/><br/>fill each filed with your configuration respectively
+
