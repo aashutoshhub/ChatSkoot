@@ -1,5 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box, Button, Stack, Text, useToast } from '@chakra-ui/react';
+import { Avatar, Box, Button, Stack, Text, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { getSender } from '../../config/ChatLogic';
@@ -8,7 +8,6 @@ import ChatLoading from './ChatLoading';
 import GroupChatmodal from './GroupChatmodal';
 
 function MyChat({ fetchAgain }) {
-  
   const [loggedUser, setLoggedUser] = useState();
 
   //getting from contextapi  //from ChatProvider
@@ -21,15 +20,13 @@ function MyChat({ fetchAgain }) {
   const toast = useToast();
 
   const fetchChats = async () => {
-    console.log("user id: ",user._id);
+    console.log('user id: ', user._id);
     try {
       const { data } = await axios.get('/api/chat');
 
       console.log('chat data from mychat', data);
 
       setChat(data); //setting chats data
-      
-
     } catch (error) {
       toast({
         title: 'Error Occured!!',
@@ -43,13 +40,15 @@ function MyChat({ fetchAgain }) {
     }
   };
 
-  console.log("logged user data directly : ",JSON.parse(localStorage.getItem('userInfo')));
+  console.log(
+    'logged user data directly : ',
+    JSON.parse(localStorage.getItem('userInfo'))
+  );
 
-  console.log("fetchAgain: ", fetchAgain);
-  
-  console.log("chat in mychat : ", chat);
+  console.log('fetchAgain: ', fetchAgain);
 
- 
+  console.log('chat in mychat : ', chat);
+
   //problem is here
   // useEffect(() => {
   //   const data1 = JSON.parse(localStorage.getItem('userInfo'));
@@ -59,14 +58,13 @@ function MyChat({ fetchAgain }) {
   // }, [fetchAgain]);
 
   useEffect(() => {
-    console.log("called useEffect1");
+    console.log('called useEffect1');
     setLoggedUser(JSON.parse(localStorage.getItem('userInfo')));
-      fetchChats();
-   }, [fetchAgain]); //fetchAgain changes 
+    fetchChats();
+  }, [fetchAgain]); //fetchAgain changes
 
-
-    console.log('loggeduser in mychat : ', loggedUser);
-  // console.log("Chat in mychat : ", chat);
+  //   console.log('loggeduser in mychat : ', loggedUser);
+  console.log('Chat in mychat : ', chat);
   // console.log('selected chat in mychat : ', selectedChat);
 
   return (
@@ -92,7 +90,6 @@ function MyChat({ fetchAgain }) {
         alignItems='center'
       >
         My Chats
-      
         {/* for group chat modal  */}
         <GroupChatmodal>
           <Button
@@ -129,33 +126,40 @@ function MyChat({ fetchAgain }) {
                 borderRadius='lg'
                 key={chat._id}
               >
+                <Avatar
+                  size='sm'
+                  cursor='pointer'
+                  // name={
+                  //   !chat.isGroupChat
+                  //     ? getSender(loggedUser, chat.users)
+                  //     : chat.chatName
+                  // }
+                  name='Aashutosh Gupta'
+                />
+
                 <Text>
                   {!chat.isGroupChat
                     ? getSender(loggedUser, chat.users)
                     : chat.chatName}
                 </Text>
 
-                {chat.latestMessage && (
+                {/* {chat.latestMessage && (
                   <Text fontSize='xs'>
                     <b>{chat.latestMessage.sender.name} : </b>
                     {chat.latestMessage.content.length > 50
                       ? chat.latestMessage.content.substring(0, 51) + '...'
                       : chat.latestMessage.content}
                   </Text>
-                )}
-
+                )} */}
               </Box>
             ))}
           </Stack>
-
         ) : (
-            
-            <ChatLoading />
-            
+          <ChatLoading />
         )}
       </Box>
     </Box>
   );
-};
+}
 
-export default MyChat
+export default MyChat;

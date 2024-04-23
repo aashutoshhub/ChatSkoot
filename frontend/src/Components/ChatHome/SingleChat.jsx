@@ -77,7 +77,6 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
     socket.on('connected', () => setSocketConnection(true));
     socket.on('typing', () => setIsTyping(true));
     socket.on('stop typing', () => setIsTyping(false));
-
   }, []);
 
   console.log(notification, "---------------------");
@@ -225,7 +224,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             flexDir='column'
             justifyContent='flex-end'
             p={3}
-            bg='#E8E8E8'
+            bg='#f0eded'
             w='100%'
             h='100%'
             borderRadius='lg'
@@ -249,18 +248,24 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             )}
 
             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
-             
-              {isTyping ?
+              {isTyping ? (
                 <>
                   <Lottie
                     loop={true}
-                  autoplay={true}
+                    autoplay={true}
                     animationData={TypingAnimation}
-                    style={{width:"70px",height:"70px",marginBottom:15,marginLeft:0}}
-                    />
-                </> :
-                (<></>)}
-              
+                    style={{
+                      width: '70px',
+                      height: '70px',
+                      marginBottom: 15,
+                      marginLeft: 0
+                    }}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
+
               <Input
                 variant='filled'
                 bg='#E0E0E0'

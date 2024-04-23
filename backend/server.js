@@ -66,15 +66,15 @@ app.use('/api/message', messageRoute);
 //console.log(process.env.NODE_ENV);
 
 //for production  to vercel
-
- console.log(path.join(__dirname, '../frontend/build'));
- app.use(express.static(path.join(__dirname, '../frontend/build')));
- app.get('/*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
- });
+/////////-----------------------------------------------------/////////
+//  console.log(path.join(__dirname, '../frontend/build'));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+});
 
 // if (process.env.NODE_ENV === 'PRODUCTION') {
-  
+
 //   console.log(path.join(__dirname, '../frontend/build'));
 //   app.use(express.static(path.join(__dirname,"../frontend/build")));
 //   app.get('/*', (req, res) => {
@@ -87,7 +87,6 @@ app.use('/api/message', messageRoute);
 //   });
 // }
 
-
 const server = app.listen(port, () => {
   console.log(`server is running on port : ${port}`);
 });
@@ -95,7 +94,7 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server, {
   pingTimeout: 60000, //it is the time after which socket connection become inactive
   cors: {
-    origin: 'http://localhost:3000'  //
+    origin: 'http://localhost:3000' //
   }
 });
 

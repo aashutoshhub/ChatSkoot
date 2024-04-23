@@ -6,14 +6,16 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className='App'>
-        <Routes>
-          <Route exact path='/' element={<Home/>} />
-          <Route exact path='/chat' element={<Chat/>} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <div className='App'>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/chat' element={<Chat />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 
